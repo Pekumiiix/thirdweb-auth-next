@@ -6,7 +6,7 @@ import { Label } from "../../@/components/ui/label";
 import { ConnectButton, ThirdwebProvider } from "thirdweb/react";
 import { client } from "../lib/client";
 import { useRouter } from "next/navigation";
-import arweave from "../lib/arweave";
+//import arweave from "../lib/arweave";
 import React, { useState } from "react";
 import { ethers } from "ethers";
 import { useActiveAccount } from "thirdweb/react";
@@ -24,7 +24,7 @@ export default function Home() {
     }
   };
 
-  async function uploadFile(file: File) {
+  /*async function uploadFile(file: File) {
     try {
       if (!account) {
         throw new Error("User is not connected");
@@ -79,6 +79,26 @@ export default function Home() {
     if (transactionId) {
       console.log("File uploaded! Transaction ID:", transactionId);
       setTransactionId(transactionId);
+    }
+  };*/
+
+  const handleUpload = async () => {
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    const response = await fetch("/api/upload", {
+      method: "POST",
+      body: formData,
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      setTransactionId(data.transactionId);
+    } else {
+      console.error("Error uploading file:", data.error);
     }
   };
 
