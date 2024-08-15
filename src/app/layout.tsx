@@ -1,13 +1,18 @@
+"use client";
+
+import { ThirdwebProvider } from "thirdweb/react";
+import "./global.css";
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>
-        <main>{children}</main>
-      </body>
-    </html>
+    <ThirdwebProvider>
+      <html>
+        <body>{children}</body>
+      </html>
+    </ThirdwebProvider>
   );
 }
