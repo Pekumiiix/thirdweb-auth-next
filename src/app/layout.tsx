@@ -11,7 +11,7 @@ export default function RootLayout({
   return (
     <ThirdwebProvider>
       <html>
-        <body>{children}</body>
+        <body className="bg-[#111115]">{children}</body>
       </html>
     </ThirdwebProvider>
   );

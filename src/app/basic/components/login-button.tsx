@@ -3,9 +3,12 @@
 import { useActiveAccount } from "thirdweb/react";
 import { generatePayload, verifyPayload } from "../actions/auth";
 import { signLoginPayload } from "thirdweb/auth";
+import { useRouter } from "next/navigation";
 
 export const LoginButton: React.FC = () => {
   const account = useActiveAccount();
+  const router = useRouter();
+
   async function handleClick() {
     if (!account) {
       return alert("Please connect your wallet");
@@ -17,11 +20,19 @@ export const LoginButton: React.FC = () => {
     // Step 3: Send the signature to the server for verification
     const finalResult = await verifyPayload(signatureResult);
 
-    alert(finalResult.valid ? "Login successful" : "Login failed");
+    if (finalResult) {
+      router.push("/");
+    }
+
+    //alert(finalResult.valid ? "Login successful" : "Login failed");
   }
 
   return (
-    <button disabled={!account} onClick={handleClick}>
+    <button
+      disabled={!account}
+      onClick={handleClick}
+      className="bg-white px-4 py-3 rounded-md font-medium disabled:opacity-35 disabled:cursor-not-allowed"
+    >
       Login
     </button>
   );
