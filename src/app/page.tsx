@@ -87,16 +87,18 @@ export default function Home() {
       <ThirdwebProvider>
         <header className="w-full flex items-center justify-center border-b border-[#29292F] bg-[#111115]">
           <nav className="container w-full h-[90px] flex items-center justify-between">
-            <p className="text-[#F8F8FF] text-[42px] font-semibold">Demo</p>
+            <p className="text-[#F8F8FF] text-xl sm:text-[42px] font-semibold">
+              Demo
+            </p>
 
-            <div>
+            <div className="max-w-[200px] sm:w-fit">
               <ConnectButton client={client} />
             </div>
           </nav>
         </header>
         <main className="bg-[#111115] flex items-center justify-center py-20">
-          <div className="w-1/2 flex flex-col items-center gap-7">
-            <p className="text-[#F8F8FF] text-[32px] text-center font-semibold">
+          <div className="w-[90%] sm:w-1/2 flex flex-col items-center gap-7">
+            <p className="text-[#F8F8FF] text-2xl sm:text-[32px] text-center font-semibold">
               Welcome to my assessment task, thanks for the opportunity
             </p>
             <div className="grid w-full max-w-sm items-center gap-4 px-10 py-8 rounded-[30px] outline outline-1 outline-[#29292F]">
@@ -110,14 +112,14 @@ export default function Home() {
                 id="picture"
                 onChange={handleFileChange}
                 type="file"
-                className="border-[#29292F] border-[1px]"
+                className="border-[#29292F] border-[1px] text-white"
               />
 
               <Button
                 variant={`default`}
                 disabled={!file}
                 onClick={handleUpload}
-                className="text-white outline outline-1 outline-white p-2 rounded-[5px]"
+                className="text-white border border-[#29292F] p-2 rounded-[5px]"
               >
                 Upload
               </Button>
