@@ -24,7 +24,7 @@ export const LoginButton: React.FC = () => {
       router.push("/");
     }
 
-    //alert(finalResult.valid ? "Login successful" : "Login failed");
+    ///alert(finalResult.valid ? "Login successful" : "Login failed");
   }
 
   return (
